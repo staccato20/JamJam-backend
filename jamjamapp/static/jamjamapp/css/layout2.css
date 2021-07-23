@@ -1,0 +1,85 @@
+@font-face {
+    font-family: 'IM_Hyemin-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2106@1.1/IM_Hyemin-Bold.woff2') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    background-color: #FFC4CE;
+    margin: 0px;
+}
+
+.navbar-image {
+    position: relative;
+    width: auto;
+    max-width: 100%;
+    min-width: 1500px;
+    height: 100%;
+    top: 0;
+}
+
+.navbar-brand {
+    position: relative;
+    width: 150px;
+    height: auto;
+    bottom: 1000px;
+    left: 50px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+}
+
+li {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+}
+
+li a {
+    margin-left: 20px;
+    color: #ffffff;
+    font-size: 25px;
+    text-decoration: none;
+    text-align: center;
+    font-weight: bold;
+    font-family: IM_Hyemin-Bold;
+}
+
+li a.current {
+    color: white;
+}
+
+li a.hover {
+    color: red;
+}
+
+.navbar-first {
+    position:absolute;
+    top:40px;
+    left:2%;
+}
+
+
+/*scrollbar css*/
+
+/* width */
+::-webkit-scrollbar {
+    width: 20px;
+}
+  /* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+  
+  /* Handle */
+::-webkit-scrollbar-thumb {
+    background: #ff99aa;
+}
+
+  /* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #FFC4CE;
+}
