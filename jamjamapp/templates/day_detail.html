@@ -3,10 +3,10 @@
 <div class="container px-4 px-lg-5">
   
   {% for posts in posts.all %}
-  <h1>제목: <a href="{% url 'detail' posts.id %}">{{posts.title}}</a></h1>
-  <h1>추억 날짜: {{posts.date}}</h1>
-  <h1>내용: {{posts.body}}</h1>
+  <h1>제목: <a href="{% url 'diary_detail' posts.id %}">{{posts.diary_title}}</a></h1>
+  <h1>추억 날짜: {{posts.diary_date}}</h1>
+  <h1>내용: {{posts.diary_body}}</h1>
   {% endfor %}
 
-  <a href="{% url 'create' %}">작성하기</a>
+  <a href="{% url 'diary_create' %}">작성하기</a>
   </div>

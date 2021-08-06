@@ -36,9 +36,16 @@ urlpatterns = [
 
     path('', jamjamapp.views.layout, name='layout'),
     path('day_detail/', jamjamapp.views.day_detail, name='day_detail'),
-    path('diary/create', jamjamapp.views.create, name='create'),
-    path('detail/<str:id>/', jamjamapp.views.detail, name='detail'),
-    path('edit/<str:id>', jamjamapp.views.edit, name='edit'),
-    path('delete/<str:id>/', jamjamapp.views.delete, name='delete'),
+    path('diary/diary_create', jamjamapp.views.diary_create, name='diary_create'),
+    path('bucketlist_write/bucket_create', jamjamapp.views.bucket_create, name='bucket_create'),
+    path('diary_detail/<str:id>/', jamjamapp.views.diary_detail, name='diary_detail'),
+    path('diary_edit/<str:id>', jamjamapp.views.diary_edit, name='diary_edit'),
+    path('p_edit/<str:id>', jamjamapp.views.p_edit, name='p_edit'),
+    path('diary_delete/<str:id>/', jamjamapp.views.diary_delete, name='diary_delete'),
+    path('profile/', jamjamapp.views.profile, name='profile'),
+    path('bucketlist/', jamjamapp.views.bucketlist, name='bucketlist'),
+    path('bucket_edit/<str:id>', jamjamapp.views.bucket_edit, name='bucket_edit'),
+    path('bucket_delete/<str:id>/', jamjamapp.views.bucket_delete, name='bucket_delete'),
+    path('bucket_detail/<str:id>/', jamjamapp.views.bucket_detail, name='bucket_detail'),
     # ------예찬이 개발-------
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

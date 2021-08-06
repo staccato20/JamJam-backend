@@ -42,13 +42,27 @@ class Hashtag(models.Model):
 
 
 class Post(models.Model):
-    title = models.CharField(max_length=100)  # 제목
-    write_date = models.DateField('date published')  # 쓴 날짜
-    # 기록하고 싶은 날짜( ex) 여행 다녀온 날 등 )
-    date = models.CharField(null=False, max_length=15, default='oooo년 oo월 oo일')
-    body = models.TextField()  # 내용
+    diary_title = models.CharField(max_length=100)#제목
+    diary_date = models.CharField(null = False, max_length=15, default='oooo년 oo월 oo일')#기록하고 싶은 날짜( ex) 여행 다녀온 날 등 )
+    diary_body = models.TextField()#내용
 
     def __str__(self):
-        return self.title
+        return self.diary_title
+
+#버킷리스트 모델
+class Bucket(models.Model):
+    bucket_title = models.CharField(max_length=100)#제목
+    bucket_date = models.CharField(null = False, max_length=15, default='oooo년 oo월 oo일')#하고 싶은 날짜( ex) ~날 ~하기 등 )
+    bucket_body = models.TextField()#내용
+
+    def __str__(self):
+        return self.bucket_title
+
+#프로필 모델
+class Profile(models.Model):
+    nickname = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.nickname
 
 # ----예찬이 개발 부분------

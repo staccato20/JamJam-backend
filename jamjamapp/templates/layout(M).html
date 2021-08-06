@@ -4,3 +4,8 @@
   <li class="nav-item"><a class="nav-link" href="{% url 'community' hashtag.id %}">{{ hashtag.name }}</a></li>
 </ul>
 {% endfor %}
+<ul class="nav nav-tabs">
+  <li role="presentation" class="active"><a href="{% url 'day_detail' %}">day_detail</a></li>
+  <li role="presentation" class="active"><a href="{% url 'profile' %}">profile</a></li>
+  <li role="presentation" class="active"><a href="{% url 'bucketlist' %}">bucketlist</a></li>
+</ul>
