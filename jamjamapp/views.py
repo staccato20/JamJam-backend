@@ -119,6 +119,8 @@ def like(request, pk):
     return redirect('detail', pk)
 # ------민정이 개발-------
 
+def layout_Y(request):
+    return render(request, 'layout(Y).html')
 
 def day_detail(request):
     posts = Post.objects
@@ -139,7 +141,7 @@ def diary_create(request):
         if form.is_valid():
             form = form.save(commit=False)
             form.save()
-            return redirect('layout')
+            return redirect('layout_Y')
     else:
         form = PostForm
         return render(request, 'diary.html', {'form':form})
@@ -151,7 +153,7 @@ def bucket_create(request):
         if form.is_valid():
             bucket = form.save(commit=False)
             bucket.save()
-            return redirect('layout')
+            return redirect('layout_Y')
     else:
         form = BucketForm
         return render(request, 'bucketlist_write.html', {'form':form})
@@ -181,7 +183,7 @@ def bucket_detail(request, id):
             bucket.post_id = bucket
             bucket.text = form.cleaned_data['text']
             bucket.save()
-            return redirect('layout', id)
+            return redirect('layout_Y', id)
     else:
         form=BucketForm()
         return render(request, 'bucketlist_detail.html', {'bucket':bucket, 'form':form})
@@ -194,7 +196,7 @@ def diary_edit(request, id):
         if form.is_valid():
             form.save(commit=False)
             form.save()
-            return redirect('layout')
+            return redirect('layout_Y')
     else:
         form = PostForm(instance=post)
         return render(request, 'diary_edit.html', {'form':form})
@@ -203,11 +205,11 @@ def diary_edit(request, id):
 def bucket_edit(request, id):
     bucket = get_object_or_404(Bucket, id = id)
     if request.method == "POST":
-        form = BucketForm(request.POST)
+        form = BucketForm(request.POST, instance=bucket)
         if form.is_valid():
-            bucket.save(commit=False)
-            bucket.save()
-            return redirect('layout')
+            form.save(commit=False)
+            form.save()
+            return redirect('layout_Y')
     else:
         form = BucketForm(instance=bucket)
         return render(request, 'bucketlist_edit.html', {'form':form})
@@ -220,7 +222,7 @@ def p_edit(request, id):
         if form.is_valid():
             form.save(commit=False)
             form.save()
-            return redirect('layout')
+            return redirect('layout_Y')
     else:
         form = ProfileForm(instance=post)
         return render(request, 'profile_edit.html', {'form':form})
@@ -229,11 +231,40 @@ def p_edit(request, id):
 def diary_delete(request, id):
     post = get_object_or_404(Post, id = id)
     post.delete()
-    return redirect('layout')
+    return redirect('layout_Y')
 
 #버킷리스트 삭제
 def bucket_delete(request, id):
     delete_bucket = get_object_or_404(Bucket, id = id)
     delete_bucket.delete()
-    return redirect('layout')
+    return redirect('layout_Y')
+
+#젬 결제
+# def pay(request):
+#     if request.method == "POST":
+#         URL = 'https://kapi.kakao.com/v1/payment/ready'
+#         headers = {
+#             "Authorization": "KakaoAK " + "Kakao Developers에서 생성한 앱의 어드민 키",   # 변경불가
+#             "Content-type": "application/x-www-form-urlencoded;charset=utf-8",  # 변경불가
+#         }
+#         params = {
+#             "cid": "TC0ONETIME",    # 테스트용 코드
+#             "partner_order_id": "1001",     # 주문번호
+#             "partner_user_id": "german",    # 유저 아이디
+#             "item_name": "연어초밥",        # 구매 물품 이름
+#             "quantity": "1",                # 구매 물품 수량
+#             "total_amount": "12000",        # 구매 물품 가격
+#             "tax_free_amount": "0",         # 구매 물품 비과세
+#             "approval_url": "결제 성공 시 이동할 url",
+#             "cancel_url": "결제 취소 시 이동할 url",
+#             "fail_url": "결제 실패 시 이동할 url",
+#         }
+
+#         res = requests.post(URL, headers=headers, params=params)
+#         request.session['tid'] = res.json()['tid']      # 결제 승인시 사용할 tid를 세션에 저장
+#         next_url = res.json()['next_redirect_pc_url']   # 결제 페이지로 넘어갈 url을 저장
+#         return redirect(next_url)
+
+
+#     return render(request, 'shop/pay.html')
 # ------예찬이 개발-------
