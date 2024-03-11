@@ -34,7 +34,7 @@ urlpatterns = [
     path('like/<int:pk>', jamjamapp.views.like, name='like'),
     # ------민정이 개발-------
 
-    path('', jamjamapp.views.layout, name='layout'),
+    path('layout_Y', jamjamapp.views.layout_Y, name='layout_Y'),
     path('day_detail/', jamjamapp.views.day_detail, name='day_detail'),
     path('diary/diary_create', jamjamapp.views.diary_create, name='diary_create'),
     path('bucketlist_write/bucket_create', jamjamapp.views.bucket_create, name='bucket_create'),
